@@ -1,0 +1,59 @@
+name: Firebase CLI Gihtub Action
+description: Setup and configure Firebase CLI
+
+inputs:
+  packager:
+    description: The package manager to use to install the CLI
+    default: pnpm
+  version:
+    description: Version of firebase-tools to install
+    default: latest
+  serviceAccountKey:
+    description: Firebase Service Account key to use
+  token:
+    description: Firebase token to use
+    deprecationMessage: Auhtentication with token is deprecated in firebase-tools, use a service account key with serviceAccountKey option instead
+  projectId:
+    description: Project id to use
+  args:
+    description: Additional arguments to pass to the CLI
+
+runs:
+  using: composite
+  steps:
+    - if: ${{ inputs.packager == 'pnpm' }}
+      name: Install firebase-tools with pnpm
+      shell: bash
+      run: pnpm add -g firebase-tools@${{ inputs.version }}
+
+    - if: ${{ inputs.packager == 'yarn' }}
+      name: Install firebase-tools with pnpm
+      shell: bash
+      run: yarn global add firebase-tools@${{ inputs.version }}
+
+    - if: ${{ inputs.packager == 'npm' }}
+      name: Install firebase-tools with pnpm
+      shell: bash
+      run: npm install -g firebase-tools@${{ inputs.version }}
+
+    - if: ${{ inputs.serviceAccountKey != '' }}
+      name: Create service account key file
+      shell: bash
+      run: |
+        echo '${{ inputs.serviceAccountKey }}' > ${{ runner.temp }}/serviceAccountKey.json
+        echo "GOOGLE_APPLICATION_CREDENTIALS=$(echo ${{ runner.temp }}/serviceAccountKey.json)" >> $GITHUB_ENV
+
+    - if: ${{ inputs.token != '' }}
+      name: Add token to FIREBASE_TOKEN env var
+      shell: bash
+      run: echo "FIREBASE_TOKEN=$(echo ${{ inputs.token }})" >> $GITHUB_ENV
+
+    - if: ${{ inputs.projectId != '' }}
+      name: Use firebase project
+      shell: bash
+      run: firebase use ${{ inputs.projectId }}
+
+    - if: ${{ inputs.args != '' }}
+      name: Launch firebase command with args
+      shell: bash
+      run: firebase ${{ inputs.args }}
