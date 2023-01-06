@@ -1,6 +1,10 @@
 name: Firebase CLI Gihtub Action
 description: Setup and configure Firebase CLI
 
+branding:
+  icon: "box"
+  color: "yellow"
+
 inputs:
   packager:
     description: The package manager to use to install the CLI
