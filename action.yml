@@ -4,7 +4,7 @@ description: Setup and configure Firebase CLI
 inputs:
   packager:
     description: The package manager to use to install the CLI
-    default: pnpm
+    default: npm
   version:
     description: Version of firebase-tools to install
     default: latest
