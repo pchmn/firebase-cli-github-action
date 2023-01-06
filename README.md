@@ -147,13 +147,13 @@ jobs:
 
 #### 1. Get a service account for your project (you can create one on [GCP Service Accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts)) with any of these roles according to your needs:
 
-- **`Service Account User`**: required for CLI deploys
-- **`Cloud Functions Admin`**: required to deploy functions
-- **`Cloud Scheduler Admin`**: required to deploy schedulded functions
-- **`Firebase Rules Admin`**: required to deploy Firestore/Firebase rules
-- **`Cloud Datastore Index Admin`**: required to deploy Firestore indexes
-- **`Firebase Hosting Admin`**: required to deploy hosting
-- **`Firebase Authentication Admin`**: required to add preview URLs to Auth authorized domains
+- `Service Account User`: required for CLI deploys
+- `Cloud Functions Admin`: required to deploy functions
+- `Cloud Scheduler Admin`: required to deploy schedulded functions
+- `Firebase Rules Admin`: required to deploy Firestore/Firebase rules
+- `Cloud Datastore Index Admin`: required to deploy Firestore indexes
+- `Firebase Hosting Admin`: required to deploy hosting
+- `Firebase Authentication Admin`: required to add preview URLs to Auth authorized domains
 
 #### 2. Add the service account key to your repository secrets:
 
