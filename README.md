@@ -57,6 +57,15 @@ jobs:
 | `projectId`         | No                                      | /             | The project to use                                                                                 |
 | `args`              | No                                      | /             | Additional arguments to pass to the CLI. Example: `deploy --only functions`                        |
 
+| Name                | Description                                                                                                | Required                                | Default value |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------- |
+| `packager`          | The package manager to use to install the CLI.<br>See [examples](#use-other-package-manager)               | No                                      | `npm`         |
+| `version`           | The `firebase-tools` version to install                                                                    | No                                      | `latest`      |
+| `serviceAccountKey` | The service account key (JSON format) to use to authenticate with.<br>See [instructions](#service-account) | Required if `token` not set             | /             |
+| `token`             | The firebase token to use to authenticate with.<br>⚠️ Deprecated, use a service account instead            | Required if `serviceAccountKey` not set | /             |
+| `projectId`         | The project to use                                                                                         | No                                      | /             |
+| `args`              | Additional arguments to pass to the CLI.<br>Example: `deploy --only functions`                             | No                                      | /             |
+
 ## Advanced usages
 
 ### Use other package manager
@@ -145,15 +154,15 @@ jobs:
 
 ### Service Account
 
-#### 1. Get a service account for your project (you can create one [GCP Service Accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts)) with any of these roles according to your needs:
+#### 1. Get a service account for your project (you can create one on [GCP Service Accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts)) with any of these roles according to your needs:
 
-- **Service Account User**: required for CLI deploys
-- **Cloud Functions Admin**: required to deploy functions
-- **Cloud Scheduler Admin**: required to deploy schedulded functions
-- **Firebase Rules Admin**: required to deploy Firestore/Firebase rules
-- **Cloud Datastore Index Admin**: required to deploy Firestore indexes
-- **Firebase Hosting Admin**: required to deploy hosting
-- **Firebase Authentication Admin**: required to add preview URLs to Auth authorized domains
+- **`Service Account User`**: required for CLI deploys
+- **`Cloud Functions Admin`**: required to deploy functions
+- **`Cloud Scheduler Admin`**: required to deploy schedulded functions
+- **`Firebase Rules Admin`**: required to deploy Firestore/Firebase rules
+- **`Cloud Datastore Index Admin`**: required to deploy Firestore indexes
+- **`Firebase Hosting Admin`**: required to deploy hosting
+- **`Firebase Authentication Admin`**: required to add preview URLs to Auth authorized domains
 
 #### 2. Add the service account key to your repository secrets:
 
