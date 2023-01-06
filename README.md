@@ -48,23 +48,14 @@ jobs:
 
 ## Inputs
 
-| Name                | Required                                | Default value | Description                                                                                        |
-| ------------------- | --------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------- |
-| `packager`          | No                                      | `npm`         | The package manager to use to install the CLI. See [examples](#use-other-package-manager)          |
-| `version`           | No                                      | `latest`      | The `firebase-tools` version to install                                                            |
-| `serviceAccountKey` | Required if `token` not set             | /             | The service account key (JSON format) to use to authenticate. See [instructions](#service-account) |
-| `token`             | Required if `serviceAccountKey` not set | /             | The firebase token to use to authenticate. ⚠️ Deprecated, use a service account instead            |
-| `projectId`         | No                                      | /             | The project to use                                                                                 |
-| `args`              | No                                      | /             | Additional arguments to pass to the CLI. Example: `deploy --only functions`                        |
-
-| Name                | Description                                                                                                | Required                                | Default value |
-| ------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------- |
-| `packager`          | The package manager to use to install the CLI.<br>See [examples](#use-other-package-manager)               | No                                      | `npm`         |
-| `version`           | The `firebase-tools` version to install                                                                    | No                                      | `latest`      |
-| `serviceAccountKey` | The service account key (JSON format) to use to authenticate with.<br>See [instructions](#service-account) | Required if `token` not set             | /             |
-| `token`             | The firebase token to use to authenticate with.<br>⚠️ Deprecated, use a service account instead            | Required if `serviceAccountKey` not set | /             |
-| `projectId`         | The project to use                                                                                         | No                                      | /             |
-| `args`              | Additional arguments to pass to the CLI.<br>Example: `deploy --only functions`                             | No                                      | /             |
+| Name                | Note                                      | Description                                                                                                |
+| ------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `packager`          | (default to `npm`)                        | The package manager to use to install the CLI.<br>See [examples](#use-other-package-manager)               |
+| `version`           | (default to `latest`)                     | The `firebase-tools` version to install                                                                    |
+| `serviceAccountKey` | (required if `token` not set)             | The service account key (JSON format) to use to authenticate with.<br>See [instructions](#service-account) |
+| `token`             | (required if `serviceAccountKey` not set) | The firebase token to use to authenticate with.<br>⚠️ Deprecated, use a service account instead            |
+| `projectId`         |                                           | The project to use                                                                                         |
+| `args`              |                                           | Additional arguments to pass to the CLI.<br>Example: `deploy --only functions`                             |
 
 ## Advanced usages
 
